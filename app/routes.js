@@ -7,6 +7,8 @@ module.exports = function(app, passport) {
     app.get('/', function(req, res) {
         res.render('index.ejs'); // load the index.ejs file
     });
+    
+    //used for login in the home page
 
      app.post('/', passport.authenticate('local-login', {
         successRedirect : '/profile', // redirect to the secure profile section
@@ -14,7 +16,7 @@ module.exports = function(app, passport) {
         failureFlash : true // allow flash messages
     }));
 
-    // =====================================
+    // in case the user gives wrong credentials it will redirect him to login page as failureRedirect:'/login'
     // LOGIN ===============================
     // =====================================
     // show the login form
