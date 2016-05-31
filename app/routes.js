@@ -10,11 +10,16 @@ module.exports = function(app, passport) {
     
     //used for login in the home page
 
-     app.post('/', passport.authenticate('local-login', {
-        successRedirect : '/profile', // redirect to the secure profile section
-        failureRedirect : '/login', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
-    }));
+     // app.post('/', function (req, res) {
+
+     // console.log("hello");
+
+     // });
+    //  app.post('/', passport.authenticate('local-login', {
+    //     successRedirect : '/profile', // redirect to the secure profile section
+    //     failureRedirect : '/login', // redirect back to the signin page if there is an error
+    //     failureFlash : true // allow flash messages
+    // }));
 
     // in case the user gives wrong credentials it will redirect him to login page as failureRedirect:'/login'
     // LOGIN ===============================
@@ -26,11 +31,12 @@ module.exports = function(app, passport) {
         res.render('login.ejs', { message: req.flash('loginMessage') }); 
     });
 
+
     // process the login form
     // app.post('/login', do all our passport stuff here);
 
 
-        app.post('/login', passport.authenticate('local-login', {
+    app.post('/login', passport.authenticate('local-login', {
         successRedirect : '/profile', // redirect to the secure profile section
         failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
